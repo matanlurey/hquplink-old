@@ -1,0 +1,10 @@
+name: swlegion
+
+dependencies:
+  built_collection:
+  built_value:
+
+dev_dependencies:
+  build_runner:
+  built_value_generator:
+  test:
