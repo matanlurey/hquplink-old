@@ -1,6 +1,7 @@
-.build/
 .dart_tool/
+build/
 node_modules/
 
+.idea
 .packages
 pubspec.lock
