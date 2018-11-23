@@ -20,13 +20,13 @@ class Keyword extends EnumClass {
   static const Keyword impact2 = _$impact2;
 
   @BuiltValueEnumConst(wireName: 'IMPACT:3')
-  static const Keyword impact3 = _$impact3;  
+  static const Keyword impact3 = _$impact3;
 
   @BuiltValueEnumConst(wireName: 'PIERCE:1')
   static const Keyword pierce1 = _$pierce1;
 
   @BuiltValueEnumConst(wireName: 'PIERCE:2')
-  static const Keyword pierce2 = _$pierce2;  
+  static const Keyword pierce2 = _$pierce2;
 
   @BuiltValueEnumConst(wireName: 'PIERCE:3')
   static const Keyword pierce3 = _$pierce3;

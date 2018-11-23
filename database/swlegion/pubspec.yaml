@@ -1,10 +1,17 @@
 name: swlegion
 
+description: Database and Models for Star Wars Legion
+author: Matan Lurey <matan@hquplink.com>
+version: 0.1.0-alpha
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
 dependencies:
-  built_collection:
-  built_value:
+  built_collection: ^4.0.0
+  built_value: ^6.1.6
+  meta: ^1.1.6
 
 dev_dependencies:
-  build_runner:
-  built_value_generator:
-  test:
+  build_runner: ^1.1.2
+  built_value_generator: ^6.1.6
+  test: ^1.5.1

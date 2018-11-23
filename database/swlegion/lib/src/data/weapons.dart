@@ -5,7 +5,12 @@ import 'weapons/e_11_blaster_rifle.dart';
 import 'weapons/unarmed.dart';
 
 /// All Weapons in Star Wars: Legion.
-final allWeapons = BuiltSet.of([
+///
+/// Includes:
+/// * [a280BlasterRifle]
+/// * [e11BlasterRifle]
+/// * [unarmed]
+final weapons = BuiltSet.of([
   a280BlasterRifle,
   e11BlasterRifle,
   unarmed,
