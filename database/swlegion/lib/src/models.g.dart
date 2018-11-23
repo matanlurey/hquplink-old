@@ -31,8 +31,9 @@ Serializers _$modelSerializers = (new Serializers().toBuilder()
       ..add(UpgradeSlot.serializer)
       ..add(Weapon.serializer)
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AttackDice)]),
-          () => new ListBuilder<AttackDice>())
+          const FullType(BuiltMap,
+              const [const FullType(AttackDice), const FullType(int)]),
+          () => new MapBuilder<AttackDice, int>())
       ..addBuilderFactory(
           const FullType(BuiltSet, const [const FullType(Keyword)]),
           () => new SetBuilder<Keyword>())
