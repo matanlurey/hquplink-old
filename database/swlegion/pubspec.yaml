@@ -1,5 +1,6 @@
 name: swlegion
 
+homepage: https://github.com/matanlurey/hquplink/tree/master/database/swlegion
 description: Database and Models for Star Wars Legion
 author: Matan Lurey <matan@hquplink.com>
 version: 0.1.0-alpha
