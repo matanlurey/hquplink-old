@@ -28,6 +28,9 @@ class UpgradeSlot extends EnumClass {
   @BuiltValueEnumConst(wireName: 'GRENADES')
   static const UpgradeSlot grenades = _$grenades;
 
+  @BuiltValueEnumConst(wireName: 'HARD_POINT')
+  static const UpgradeSlot hardPoint = _$hardPoint;
+
   @BuiltValueEnumConst(wireName: 'COMMS')
   static const UpgradeSlot comms = _$comms;
 

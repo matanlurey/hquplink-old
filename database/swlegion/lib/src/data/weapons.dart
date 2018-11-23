@@ -1,6 +1,7 @@
 import 'package:built_collection/built_collection.dart';
 
 import 'weapons/a_280_blaster_rifle.dart';
+import 'weapons/a_300_blaster_rifle.dart';
 import 'weapons/anakins_lightsaber.dart';
 import 'weapons/ax_20_blaster_cannon.dart';
 import 'weapons/e_11_blaster_rifle.dart';
@@ -14,6 +15,7 @@ import 'weapons/vaders_lightsaber.dart';
 ///
 /// Includes:
 /// * [a280BlasterRifle]
+/// * [a300BlasterRifle]
 /// * [anakinsLightsaber]
 /// * [ax20BlasterCannon]
 /// * [e11BlasterRifle]
@@ -24,6 +26,7 @@ import 'weapons/vaders_lightsaber.dart';
 /// * [vadersLightsaber]
 final weapons = BuiltSet.of([
   a280BlasterRifle,
+  a300BlasterRifle,
   anakinsLightsaber,
   ax20BlasterCannon,
   e11BlasterRifle,
