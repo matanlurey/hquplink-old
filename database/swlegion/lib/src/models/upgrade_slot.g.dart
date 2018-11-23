@@ -25,6 +25,7 @@ const UpgradeSlot _$force = const UpgradeSlot._('force');
 const UpgradeSlot _$command = const UpgradeSlot._('command');
 const UpgradeSlot _$gear = const UpgradeSlot._('gear');
 const UpgradeSlot _$grenades = const UpgradeSlot._('grenades');
+const UpgradeSlot _$hardPoint = const UpgradeSlot._('hardPoint');
 const UpgradeSlot _$comms = const UpgradeSlot._('comms');
 const UpgradeSlot _$pilot = const UpgradeSlot._('pilot');
 const UpgradeSlot _$elite = const UpgradeSlot._('elite');
@@ -44,6 +45,8 @@ UpgradeSlot _$valueOf(String name) {
       return _$gear;
     case 'grenades':
       return _$grenades;
+    case 'hardPoint':
+      return _$hardPoint;
     case 'comms':
       return _$comms;
     case 'pilot':
@@ -65,6 +68,7 @@ final BuiltSet<UpgradeSlot> _$values =
   _$command,
   _$gear,
   _$grenades,
+  _$hardPoint,
   _$comms,
   _$pilot,
   _$elite,
@@ -81,6 +85,7 @@ class _$UpgradeSlotSerializer implements PrimitiveSerializer<UpgradeSlot> {
     'command': 'COMMAND',
     'gear': 'GEAR',
     'grenades': 'GRENADES',
+    'hardPoint': 'HARD_POINT',
     'comms': 'COMMS',
     'pilot': 'PILOT',
     'elite': 'ELITE',
@@ -93,6 +98,7 @@ class _$UpgradeSlotSerializer implements PrimitiveSerializer<UpgradeSlot> {
     'COMMAND': 'command',
     'GEAR': 'gear',
     'GRENADES': 'grenades',
+    'HARD_POINT': 'hardPoint',
     'COMMS': 'comms',
     'PILOT': 'pilot',
     'ELITE': 'elite',

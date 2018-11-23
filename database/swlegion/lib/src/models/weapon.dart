@@ -13,7 +13,7 @@ abstract class Weapon implements Built<Weapon, WeaponBuilder> {
 
   factory Weapon({
     @required String name,
-    @required List<AttackDice> dice,
+    @required Map<AttackDice, int> dice,
     @required int minRange,
     int maxRange,
     List<Keyword> keywords: const [],
@@ -32,7 +32,7 @@ abstract class Weapon implements Built<Weapon, WeaponBuilder> {
   String get name;
 
   /// Attack dice for the weapon.
-  BuiltList<AttackDice> get dice;
+  BuiltMap<AttackDice, int> get dice;
 
   /// Minimum range of the weapon.
   ///

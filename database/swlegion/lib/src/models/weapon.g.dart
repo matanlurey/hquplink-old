@@ -35,8 +35,8 @@ class _$WeaponSerializer implements StructuredSerializer<Weapon> {
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'dice',
       serializers.serialize(object.dice,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(AttackDice)])),
+          specifiedType: const FullType(BuiltMap,
+              const [const FullType(AttackDice), const FullType(int)])),
       'min_range',
       serializers.serialize(object.minRange,
           specifiedType: const FullType(int)),
@@ -72,8 +72,10 @@ class _$WeaponSerializer implements StructuredSerializer<Weapon> {
           break;
         case 'dice':
           result.dice.replace(serializers.deserialize(value,
-              specifiedType: const FullType(
-                  BuiltList, const [const FullType(AttackDice)])) as BuiltList);
+              specifiedType: const FullType(BuiltMap, const [
+                const FullType(AttackDice),
+                const FullType(int)
+              ])) as BuiltMap);
           break;
         case 'min_range':
           result.minRange = serializers.deserialize(value,
@@ -100,7 +102,7 @@ class _$Weapon extends Weapon {
   @override
   final String name;
   @override
-  final BuiltList<AttackDice> dice;
+  final BuiltMap<AttackDice, int> dice;
   @override
   final int minRange;
   @override
@@ -173,10 +175,10 @@ class WeaponBuilder implements Builder<Weapon, WeaponBuilder> {
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
-  ListBuilder<AttackDice> _dice;
-  ListBuilder<AttackDice> get dice =>
-      _$this._dice ??= new ListBuilder<AttackDice>();
-  set dice(ListBuilder<AttackDice> dice) => _$this._dice = dice;
+  MapBuilder<AttackDice, int> _dice;
+  MapBuilder<AttackDice, int> get dice =>
+      _$this._dice ??= new MapBuilder<AttackDice, int>();
+  set dice(MapBuilder<AttackDice, int> dice) => _$this._dice = dice;
 
   int _minRange;
   int get minRange => _$this._minRange;
