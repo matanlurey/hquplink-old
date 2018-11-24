@@ -51,12 +51,20 @@ class _HQUplinkAppState extends State<HQUplinkApp> {
                   });
                   switch (index) {
                     case 0:
-                      return Navigator.pushReplacementNamed(context, '/');
+                      return Navigator.pushReplacementNamed(
+                        context,
+                        '/',
+                      );
                     case 1:
-                      return Navigator.pushReplacementNamed(context, '/browse');
+                      return Navigator.pushReplacementNamed(
+                        context,
+                        '/browse',
+                      );
                     case 2:
                       return Navigator.pushReplacementNamed(
-                          context, '/profile');
+                        context,
+                        '/profile',
+                      );
                   }
                 },
                 page: allPages[_activeIndex],

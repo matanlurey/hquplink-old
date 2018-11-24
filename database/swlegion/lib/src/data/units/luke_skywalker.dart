@@ -4,6 +4,7 @@ import 'package:swlegion/src/models.dart';
 
 final lukeSkywalker = Unit(
   name: 'Luke Skywalker',
+  subTitle: 'Hero of the Rebellion',
   faction: Faction.rebels,
   miniatures: 1,
   rank: Rank.commander,

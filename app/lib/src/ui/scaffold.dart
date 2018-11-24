@@ -48,7 +48,7 @@ class HQUplinkScaffold extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            title: Text('Person'),
+            title: Text('Profile'),
           ),
         ],
         onTap: onBottomNavTapped,
