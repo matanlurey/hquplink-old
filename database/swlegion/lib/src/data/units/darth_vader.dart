@@ -3,6 +3,7 @@ import 'package:swlegion/src/models.dart';
 
 final darthVader = Unit(
   name: 'Darth Vader',
+  subTitle: 'Dark Lord of the Sith',
   faction: Faction.imperials,
   miniatures: 1,
   rank: Rank.commander,
