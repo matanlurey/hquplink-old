@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'ui/pages/browse.dart' as pages;
+import 'ui/scaffold.dart';
+
 /// Root [Widget] for the `HQ Uplink` application.
 class HQUplinkApp extends StatefulWidget {
   const HQUplinkApp();
@@ -13,53 +16,53 @@ class _HQUplinkAppState extends State<HQUplinkApp> {
 
   @override
   build(BuildContext context) {
+    // Determine the active page, by index of selected bottom navigation button.
+    final allPages = <HQUplinkPage>[
+      HQUplinkPage(
+        title: 'Home',
+        route: '/',
+        build: (_) => Center(child: Text('Home')),
+      ),
+      HQUplinkPage(
+        title: 'Browse',
+        route: '/browse',
+        build: (_) => pages.BrowsePage(),
+      ),
+      HQUplinkPage(
+        title: 'Profile',
+        route: '/profile',
+        build: (_) => Center(child: Text('Profile')),
+      ),
+    ];
     return MaterialApp(
       title: 'HQ Uplink',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: _scaffold(
-        body: Center(
-          child: const [
-            Text('Home'),
-            Text('Browse'),
-            Text('Profile'),
-          ][_activeIndex],
-        ),
-        context: context,
-      ),
-    );
-  }
-
-  Widget _scaffold({
-    @required Widget body,
-    @required BuildContext context,
-  }) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('HQ Uplink')),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _activeIndex,
-        onTap: (index) {
-          setState(() {
-            _activeIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            title: Text('Browse'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Person'),
-          ),
-        ],
-      ),
-      body: body,
+      routes: Map<String, WidgetBuilder>.fromIterable(allPages,
+          key: (p) => p.route,
+          value: (p) {
+            return (context) {
+              return HQUplinkScaffold(
+                activeBottomNav: _activeIndex,
+                onBottomNavTapped: (index) {
+                  setState(() {
+                    _activeIndex = index;
+                  });
+                  switch (index) {
+                    case 0:
+                      return Navigator.pushReplacementNamed(context, '/');
+                    case 1:
+                      return Navigator.pushReplacementNamed(context, '/browse');
+                    case 2:
+                      return Navigator.pushReplacementNamed(
+                          context, '/profile');
+                  }
+                },
+                page: allPages[_activeIndex],
+              );
+            };
+          }),
     );
   }
 }
