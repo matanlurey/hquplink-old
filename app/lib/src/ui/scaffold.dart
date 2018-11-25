@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../services/auth.dart';
 
 /// Represents a page within the application.
 class HQUplinkPage {
@@ -53,7 +56,41 @@ class HQUplinkScaffold extends StatelessWidget {
         ],
         onTap: onBottomNavTapped,
       ),
-      body: page.build(context),
+      body: _ProvidesHQUplinkAuth(
+        child: page.build(context),
+      ),
+    );
+  }
+}
+
+class _ProvidesHQUplinkAuth extends StatefulWidget {
+  final Widget child;
+
+  const _ProvidesHQUplinkAuth({
+    @required this.child,
+  });
+
+  @override
+  createState() => _ProvidesHQUplinkAuthState(child: child);
+}
+
+class _ProvidesHQUplinkAuthState extends State<_ProvidesHQUplinkAuth> {
+  final Widget child;
+  
+  _ProvidesHQUplinkAuthState({@required this.child});
+
+  FirebaseUser currentUser;
+
+  @override
+  build(_) {
+    return HQUplinkAuth(
+      child: child,
+      currentUser: currentUser,
+      onCurrentUserChanged: (newUser) {
+        setState(() {
+          currentUser = newUser;
+        });
+      }
     );
   }
 }

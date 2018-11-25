@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'ui/pages/browse.dart' as pages;
+import 'ui/pages/profile.dart' as pages;
 import 'ui/scaffold.dart';
 
 /// Root [Widget] for the `HQ Uplink` application.
@@ -31,7 +32,7 @@ class _HQUplinkAppState extends State<HQUplinkApp> {
       HQUplinkPage(
         title: 'Profile',
         route: '/profile',
-        build: (_) => Center(child: Text('Profile')),
+        build: (_) => pages.ProfilePage(),
       ),
     ];
     return MaterialApp(
