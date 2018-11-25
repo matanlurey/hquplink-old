@@ -1,0 +1,24 @@
+language: dart
+
+before_script:
+  - git clone https://github.com/flutter/flutter.git -b beta
+
+jobs:
+  include:
+    - stage: analyze_and_format
+      script:
+        - ./ci/presubmit.sh format
+        - ./ci/presubmit.sh analyze
+      dart: stable
+
+# Only building master means that we don't run two builds for each pull request.
+branches:
+  only:
+    - master
+
+stages:
+  - analyze_and_format
+
+cache:
+  directories:
+    - "$HOME/.pub-cache"
