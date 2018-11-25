@@ -28,8 +28,8 @@ while (( "$#" )); do
     ;;
   format) echo
     echo -e '\033[1mTASK: Format\033[22m'
-    echo -e 'dartfmt -n --set-exit-if-changed .'
-    dartfmt -n --set-exit-if-changed . || EXIT_CODE=$?
+    echo -e 'dartfmt -n --set-exit-if-changed app database/swlegion'
+    dartfmt -n --set-exit-if-changed app database/swlegion || EXIT_CODE=$?
     ;;
   esac
 
