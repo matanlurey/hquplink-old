@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/widgets.dart';
 
 import '../../services/auth.dart';
 
@@ -9,7 +10,7 @@ class ProfilePage extends StatelessWidget {
   build(BuildContext context) {
     final auth = HQUplinkAuth.of(context);
     final user = auth.currentUser;
-    if (user == null) {
+    if (user == null || auth.googleIdentity == null) {
       return Center(
         child: RaisedButton.icon(
           icon: Icon(Icons.person),
@@ -20,6 +21,19 @@ class ProfilePage extends StatelessWidget {
         ),
       );
     }
-    return Center(child: Text('Logged in as ${user.displayName}'));
+    return Center(
+      child: RaisedButton.icon(
+        icon: Container(
+          child: GoogleUserCircleAvatar(
+            identity: auth.googleIdentity,
+          ),
+          padding: EdgeInsets.all(4.0),
+        ),
+        label: Text('Logout'),
+        onPressed: () {
+          auth.signOut();
+        },
+      ),
+    );
   }
 }

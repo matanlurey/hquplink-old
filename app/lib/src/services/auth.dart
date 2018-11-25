@@ -14,13 +14,14 @@ class HQUplinkAuth extends InheritedWidget {
 
   HQUplinkAuth({
     @required Widget child,
-    FirebaseUser currentUser,
+    @required this.currentUser,
     @required this.onCurrentUserChanged,
-  })  : currentUser = currentUser ?? _googleSignIn.currentUser,
-        super(child: child);
+  }) : super(child: child);
 
   @override
   updateShouldNotify(HQUplinkAuth other) => currentUser != other.currentUser;
+
+  GoogleSignInAccount get googleIdentity => _googleSignIn.currentUser;
 
   Future<void> signIn() async {
     final authWithGoogle = await (await _googleSignIn.signIn()).authentication;
@@ -29,5 +30,10 @@ class HQUplinkAuth extends InheritedWidget {
       idToken: authWithGoogle.idToken,
     );
     onCurrentUserChanged(await firebaseUser);
+  }
+
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+    onCurrentUserChanged(null);
   }
 }

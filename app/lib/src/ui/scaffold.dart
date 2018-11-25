@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/widgets.dart';
 
 import '../services/auth.dart';
 
@@ -34,30 +35,30 @@ class HQUplinkScaffold extends StatelessWidget {
 
   @override
   build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(page.title),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: activeBottomNav,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            title: Text('Browse'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Profile'),
-          ),
-        ],
-        onTap: onBottomNavTapped,
-      ),
-      body: _ProvidesHQUplinkAuth(
-        child: page.build(context),
+    return _ProvidesHQUplinkAuth(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(page.title),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: activeBottomNav,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.library_books),
+              title: Text('Browse'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text('Profile'),
+            ),
+          ],
+          onTap: onBottomNavTapped,
+        ),
+        body: page.build(context),
       ),
     );
   }
@@ -76,10 +77,20 @@ class _ProvidesHQUplinkAuth extends StatefulWidget {
 
 class _ProvidesHQUplinkAuthState extends State<_ProvidesHQUplinkAuth> {
   final Widget child;
-  
+
   _ProvidesHQUplinkAuthState({@required this.child});
 
   FirebaseUser currentUser;
+
+  @override
+  initState() {
+    super.initState();
+    FirebaseAuth.instance.currentUser().then((currentUser) {
+      setState(() {
+        this.currentUser = currentUser;
+      });
+    });
+  }
 
   @override
   build(_) {
@@ -90,7 +101,7 @@ class _ProvidesHQUplinkAuthState extends State<_ProvidesHQUplinkAuth> {
         setState(() {
           currentUser = newUser;
         });
-      }
+      },
     );
   }
 }
