@@ -19,12 +19,10 @@ while (( "$#" )); do
     pub upgrade || exit $?
     dartanalyzer --fatal-infos --fatal-warnings . || EXIT_CODE=$?
     popd
-    echo -e 'pushd app'
     echo -e 'flutter packages upgrade'
     echo -e 'flutter analyze --no-pub .'
-    pushd app
-    ./flutter/bin/flutter packages upgrade
-    ./flutter/bin/flutter analyze --no-pub . || EXIT_CODE=$?
+    flutter packages upgrade
+    flutter analyze --no-pub . || EXIT_CODE=$?
     ;;
   format) echo
     echo -e '\033[1mTASK: Format\033[22m'
