@@ -24,4 +24,3 @@ cache:
   directories:
     - "$HOME/.pub-cache"
     - "$HOME/flutter"
-
