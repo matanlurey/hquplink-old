@@ -1,46 +1,40 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'pages/profile.dart';
+import 'pages/browse.dart';
 import '../services/auth.dart';
 
-/// Represents a page within the application.
-class HQUplinkPage {
-  /// Title to be displayed.
-  final String title;
-
-  /// Route to respond to.
-  final String route;
-
-  /// Widget to build for the content area.
-  final WidgetBuilder build;
-
-  const HQUplinkPage({
-    @required this.title,
-    @required this.route,
-    @required this.build,
-  });
+class HQUplinkHome extends StatefulWidget {
+  @override
+  State createState() => HQUplinkHomeState();
 }
 
-class HQUplinkScaffold extends StatelessWidget {
-  final int activeBottomNav;
-  final HQUplinkPage page;
-  final void Function(int) onBottomNavTapped;
+class HQUplinkHomeState extends State<HQUplinkHome> {
+  int _currentIndex = 1;
 
-  const HQUplinkScaffold({
-    @required this.activeBottomNav,
-    @required this.page,
-    @required this.onBottomNavTapped,
-  });
+  final List<Widget> _pages = const <Widget>[
+    const Center(child: Text('home')),
+    const BrowsePage(),
+    const ProfilePage(),
+  ];
+
+  final List<Text> _titles = const <Text>[
+    const Text('Home'),
+    const Text('Browse'),
+    const Text('Profile'),
+  ];
 
   @override
   build(BuildContext context) {
     return _ProvidesHQUplinkAuth(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(page.title),
+          title: _titles[_currentIndex],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: activeBottomNav,
+          currentIndex: _currentIndex,
+          type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -55,9 +49,13 @@ class HQUplinkScaffold extends StatelessWidget {
               title: Text('Profile'),
             ),
           ],
-          onTap: onBottomNavTapped,
+          onTap: (int index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
         ),
-        body: page.build(context),
+        body: _pages[_currentIndex],
       ),
     );
   }
@@ -71,14 +69,10 @@ class _ProvidesHQUplinkAuth extends StatefulWidget {
   });
 
   @override
-  createState() => _ProvidesHQUplinkAuthState(child: child);
+  createState() => _ProvidesHQUplinkAuthState();
 }
 
 class _ProvidesHQUplinkAuthState extends State<_ProvidesHQUplinkAuth> {
-  final Widget child;
-
-  _ProvidesHQUplinkAuthState({@required this.child});
-
   FirebaseUser currentUser;
 
   @override
@@ -94,7 +88,7 @@ class _ProvidesHQUplinkAuthState extends State<_ProvidesHQUplinkAuth> {
   @override
   build(_) {
     return HQUplinkAuth(
-      child: child,
+      child: widget.child,
       currentUser: currentUser,
       onCurrentUserChanged: (newUser) {
         setState(() {
