@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hquplink/src/ui/pages/profile.dart';
+
+import 'pages/profile.dart';
 import 'pages/browse.dart';
 import '../services/auth.dart';
 

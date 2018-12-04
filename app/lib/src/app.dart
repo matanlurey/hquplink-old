@@ -13,7 +13,6 @@ class HQUplinkApp extends StatefulWidget {
 }
 
 class _HQUplinkAppState extends State<HQUplinkApp> {
-
   @override
   build(BuildContext context) {
     return MaterialApp(
@@ -21,10 +20,12 @@ class _HQUplinkAppState extends State<HQUplinkApp> {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      routes: <String, WidgetBuilder> {
+      routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => HQUplinkHome(),
-        pages.BrowseUnits.routeName: (BuildContext context) => const pages.BrowseUnits(),
-        pages.BrowseWeapons.routeName: (BuildContext context) => const pages.BrowseWeapons(),
+        pages.BrowseUnits.routeName: (BuildContext context) =>
+            const pages.BrowseUnits(),
+        pages.BrowseWeapons.routeName: (BuildContext context) =>
+            const pages.BrowseWeapons(),
       },
     );
   }
